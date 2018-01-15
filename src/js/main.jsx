@@ -1,37 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MopidyServer from './mopidy-server.jsx';
+import MopidyList from './components/mopidylist.jsx';
 import MopidySocket from './mopidysocket.jsx'
 import main from "../sass/main.scss";
 
-const fakeData = [{
+const fakeData = {
 	name: "MopidyOne",
 	url: "http://urlOne",
+	key:"fakeKeyIam",
+	type:"_mopidy-http._tcp.local.",
 	port: 6680,
-	httpEnabled:true,
+	urls:["http://localhost:6680"],
+	httpEnabled: true,
 	defaultGui: "GUI-One",
 	identifier: "http://urlOne:6680"
-}];
+};
 /**
  * 
  */
 class Main extends React.Component {
+	onmessage(event) {
+		var json = JSON.parse(event.data);
+		console.log("I got:" + event.data);
+		var tmp = this.state.info.slice();
+		switch (json.event) {
+			case "Resolved":
+				this.setState(
+					 {info: this.state.info.concat([json.info]) }
+				);
+				break;
+			case "Removed":
+				this.setState({
+						info: this.state.info.filter(
+							info => info.key !== json.info.key)
+					});
+				break;
+			case "Detected":
+				break;
+
+		}
+	}
 	constructor(props) {
-		super(props)
+		super(props);
+		this.state = { info: [fakeData] };
 	}
 	render() {
-		const servers = this.props.servers.map((server, index) => (
-			<MopidyServer port={server.port} name={server.name}
-			 defaultGui={server.defaultGui}
-			 httpEnabled={server.httpEnabled}
-			 url={server.url}
-			 />
-		))
 		return <div>
+			<MopidySocket onmessage={this.onmessage.bind(this)} />
 			<link rel="stylesheet" href={main} type="text/css" />
 			<h1>React is rendering with props! See: {this.props.prop}!!</h1>
-			
-			{servers}
+			<MopidyList infoList={this.state.info} />
 		</div>
 	}
 }
