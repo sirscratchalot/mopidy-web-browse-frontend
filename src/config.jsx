@@ -1,5 +1,5 @@
 const CONFIG = 
 {
-	"target":"ws://localhost:9000/flow"
+	"target":"/flow"
 }
 export default CONFIG;
