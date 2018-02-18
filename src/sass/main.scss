@@ -1,3 +1,85 @@
-div {
-    
+$border-color: black;
+$header-div-color: rgb(201, 182, 182);
+$footer-height:15%;
+body{
+    margin:0;
+}
+html,body,.fill {
+    height:100%;
+    overflow:hidden;
+}
+
+iframe {
+    height:100%-$footer-height;
+}
+
+.footer {
+    white-space: nowrap;
+    padding-top:0.1em;
+    min-height:8em;
+    bottom: 0;
+    height: $footer-height;
+    width: auto;
+    left: 0;
+    overflow-y:hidden;
+    overflow-x:auto;
+    border-top: 2px solid $border-color;
+    .mopidyView {
+        margin-top:0.2em;
+        height:90%;
+        display: inline-block;
+        width:auto;
+        min-height:2em;
+        border:2px solid $border-color;
+        border-radius:0.4em;
+        .headerDiv,.linksDiv{
+            padding:0 0.2em;
+            border:1px solid $border-color;
+            display:inline-block;
+            vertical-align: top;
+            height:100%;
+        }
+        .linksDiv{
+            overflow-y:auto;
+        }
+        margin:0;
+        margin-right:0.3em;
+        h4{
+            margin:0.5em;
+        }
+    }
+}
+
+.currentView  {
+    width:100%;
+}
+
+.mopidyView {
+    margin: 0.8em auto;
+    min-height: 10em;
+    width: 80%;
+    box-shadow: 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    .headerDiv {
+        background: rgb(163,163,163); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(163,163,163,1) 0%, rgba(174,175,175,1) 27%, rgba(184,186,198,1) 65%, rgba(172,168,173,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(163,163,163,1) 0%,rgba(174,175,175,1) 27%,rgba(184,186,198,1) 65%,rgba(172,168,173,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(163,163,163,1) 0%,rgba(174,175,175,1) 27%,rgba(184,186,198,1) 65%,rgba(172,168,173,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#aca8ad',GradientType=1 );
+        text-align:center;
+        padding-top: 0.2em;
+        padding-bottom: 0.9em;
+        padding-left: 1em;
+        border-bottom: 1px solid rgb(187, 184, 184);
+    }
+    .linksDiv {
+        padding-top:0.5em;
+        padding-left:0.5em;
+        input{
+        box-shadow: 0.1em 0.1em rgba(0, 0, 0, .12);
+        background:none;
+        padding:0.3em;
+        margin:0.2em;
+        border:1px solid $border-color;
+        border-radius:0.5em;
+    }}
 }

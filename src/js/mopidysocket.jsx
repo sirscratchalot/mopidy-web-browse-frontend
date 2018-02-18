@@ -1,6 +1,6 @@
 import React from "react"
 import SimpleSocket from "./simple-socket.jsx"
-const MopidySocket = ({onmessage}) =>  (
-        <SimpleSocket onmessage={onmessage} url="ws://localhost:9000/flow" />
+const MopidySocket = ({url,onmessage}) =>  (
+        <SimpleSocket onmessage={onmessage} url={url} />
 );
 export default MopidySocket;
