@@ -1,12 +1,13 @@
 {
-  "name": "mopidy-browse",
+  "name": "mopidy-web-browse-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run": "parcel src/index.html",
-    "dist": "parcel build ./src/index.html --public-url /public/frontend"
+    "dist": "parcel build ./src/index.html --public-url /public/frontend",
+    "dist-copy": "parcel build ./src/index.html --public-url /public/frontend && cp -r dist ../local-discover/public/frontend"
   },
   "keywords": [],
   "author": "",
