@@ -8,6 +8,7 @@ class SimpleSocket extends React.Component{
         const location = window.location;
         const start = location.scheme === "https:" ? "wss://" : "ws://";
         const urlToo =  start + location.host + (url.startsWith("/") ? "" :"/")+url;
+        console.log("Generated url: "+urlToo);
         return urlToo;
     }
 	constructor(props) {
